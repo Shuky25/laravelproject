@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\sukiController;
 use App\Http\Controllers\userController;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,21 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* rute gde se pravi f-ja */
-/* Route::get('/', function () {
-    return view('suki');
-})->name('home');
-
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
-
-Route::get('/login', function() {
-    return view('login');
-})->name('login'); */
-
 /* rute sa parametrima */
-Route::get('/', [sukiController::class, 'show']);
+Route::get('/', [sukiController::class, 'show'])->name('pocetna');
 Route::get('/register', [userController::class, 'regShow'])->name('register');
 Route::get('/login', [userController::class, 'logShow'])->name('login');
 
@@ -37,10 +25,7 @@ Route::get('/posts/{id}', function($id) {
     return response("Post " . $id);
 })->where('id', '[0-9]+');
 
-Route::post('/user', [userController::class, 'getDataLogin'])->name('users');
-// Route::view('login', 'login');
-
-Route::post('/userRegister', [userController::class, 'getDataRegister'])->name('usersRegister');
-Route::view('register', 'register');
+Route::post('/login', [userController::class, 'getDataLogin'])->name('getLoginData');
+Route::post('/register', [userController::class, 'getDataRegister'])->name('getRegisterData');
 
 

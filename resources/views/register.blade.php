@@ -12,7 +12,7 @@
     @component('components.navbar.navbar')
     @endcomponent
     <h1>Ovde se mozete registrovati</h1>
-    <form action="{{route('usersRegister')}}" method="post">
+    <form action="{{route('register')}}" method="post">
         @csrf
         <div class="form-control">
             <div class="box">

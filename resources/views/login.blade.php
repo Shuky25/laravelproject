@@ -11,19 +11,19 @@
     @endcomponent
     <h1>Ovde se mozete logovati</h1>
     
-    <form action="user" method="post">
+    <form action="login" method="post">
         @csrf
         <div class="form-control">
             <label for="mejl">Mejl: </label><br>
-            <input name="username" value="{{old('username')}}" type="text" placeholder="Unesi mejl">
-            @error('username')
+            <input name="email" value="{{old('email')}}" type="text" placeholder="Unesi mejl">
+            @error('email')
                 <br><p class="greska" style="color: red;">{{$message}}</p>
             @enderror
         </div>
         <div class="form-control">
             <label for="mejl">Sifra: </label><br>
-            <input name="namepassword" type="password" placeholder="Unesi sifru">
-            @error('namepassword')
+            <input name="password" type="password" placeholder="Unesi sifru">
+            @error('password')
                 <br><p class="greska" style="color: red;">{{$message}}</p>
             @enderror
         </div>

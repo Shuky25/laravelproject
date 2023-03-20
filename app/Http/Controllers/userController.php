@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -36,9 +37,14 @@ class userController extends Controller
 
     public function getDataLogin (Request $req) {
         $req->validate([
-            'username' => 'required',
-            'namepassword' => 'required'
+            'email' => 'required',
+            'password' => 'required'
         ]);
-        return $req->input();
+
+        $credentials = $req->only('email', 'password');
+        if(Auth::attempt($credentials)) {
+            return redirect()->route('pocetna');
+        }
+        return redirect(route('login'))->with('error', 'login details are not valid');
     }
 }
